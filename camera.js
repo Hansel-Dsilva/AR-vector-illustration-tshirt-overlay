@@ -16,7 +16,7 @@
  */
 
 import * as posenet_module from '@tensorflow-models/posenet';
-import * as facemesh_module from '@tensorflow-models/facemesh';
+// import * as facemesh_module from '@tensorflow-models/facemesh';
 import * as tf from '@tensorflow/tfjs';
 import * as paper from 'paper';
 import dat from 'dat.gui';
@@ -41,14 +41,14 @@ let videoWidth = 300;
 let videoHeight = 300;
 
 // Canvas
-let faceDetection = null;
+// let faceDetection = null;
 let illustration = null;
 let canvasScope;
 let canvasWidth = 800;
 let canvasHeight = 800;
 
 // ML models
-let facemesh;
+// let facemesh;
 let posenet;
 let minPoseConfidence = 0.15;
 let minPartConfidence = 0.1;
@@ -177,7 +177,7 @@ function detectPoseInRealTime(video) {
 
     // Creates a tensor from an image
     const input = tf.browser.fromPixels(canvas);
-    faceDetection = await facemesh.estimateFaces(input, false, false);
+    // faceDetection = await facemesh.estimateFaces(input, false, false);
     let all_poses = await posenet.estimatePoses(video, {
       flipHorizontal: true,
       decodingMethod: 'multi-person',
@@ -197,12 +197,12 @@ function detectPoseInRealTime(video) {
           drawSkeleton(keypoints, minPartConfidence, keypointCtx);
         }
       });
-      faceDetection.forEach(face => {
-        Object.values(facePartName2Index).forEach(index => {
-            let p = face.scaledMesh[index];
-            drawPoint(keypointCtx, p[1], p[0], 2, 'red');
-        });
-      });
+      // faceDetection.forEach(face => {
+      //   Object.values(facePartName2Index).forEach(index => {
+      //       let p = face.scaledMesh[index];
+      //       drawPoint(keypointCtx, p[1], p[0], 2, 'red');
+      //   });
+      // });
     }
 
     canvasScope.project.clear();
@@ -210,12 +210,12 @@ function detectPoseInRealTime(video) {
     if (poses.length >= 1 && illustration) {
       Skeleton.flipPose(poses[0]);
 
-      if (faceDetection && faceDetection.length > 0) {
-        let face = Skeleton.toFaceFrame(faceDetection[0]);
-        illustration.updateSkeleton(poses[0], face);
-      } else {
-        illustration.updateSkeleton(poses[0], null);
-      }
+      // if (faceDetection && faceDetection.length > 0) {
+      //   let face = Skeleton.toFaceFrame(faceDetection[0]);
+      //   illustration.updateSkeleton(poses[0], face);
+      // } else {
+      illustration.updateSkeleton(poses[0], null);
+      // }
       illustration.draw(canvasScope, videoWidth, videoHeight);
 
       if (guiState.debug.showIllustrationDebug) {
@@ -269,8 +269,8 @@ export async function bindPage() {
     multiplier: defaultMultiplier,
     quantBytes: defaultQuantBytes
   });
-  setStatusText('Loading FaceMesh model...');
-  facemesh = await facemesh_module.load();
+  // setStatusText('Loading FaceMesh model...');
+  // facemesh = await facemesh_module.load();
 
   setStatusText('Loading Avatar file...');
   let t0 = new Date();
