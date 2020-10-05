@@ -4,27 +4,29 @@
 <head>
     <title>PoseNet - Camera Feed Demo</title>
     <style>
-        body {
+        /* body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
+        } */
 
-        .canvas-container {
-            width: 800px;
-            max-width: 100%;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
+        /* .canvas-container { */
+            /* width: 800px; */
+            /* max-width: 100%; */
+            /* display: flex; */
+            /* justify-content: center; */
+            /* position: relative; */
+        /* } */
 
         .camera-canvas {
             position: absolute;
-            transform: scale(0.5, 0.5);
-            transform-origin: 0 0;
-            left: 10px;
-            top: 10px;
+            /* transform: scale(0.5, 0.5); */
+            /* transform-origin: 0 0; */
+            /* left: 10px; */
+            /* top: 10px; */
+            z-index: -1;
+            /* position:relative; */
         }
 
         #main {
@@ -33,9 +35,9 @@
             position: absolute;
         }
 
-        .illustration-canvas {
+        /* .illustration-canvas {
             border: 1px solid #eeeeee;
-        }
+        } */
 
         .footer {
             position: fixed;
@@ -127,8 +129,10 @@
             </video>
             <canvas id="output" class="camera-canvas"></canvas>
             <canvas id="keypoints" class="camera-canvas"></canvas>
+            
         </div>
         <canvas class="illustration-canvas"></cavnas>
+        
     </div>
     <div class="footer">
         <div class="footer-text">

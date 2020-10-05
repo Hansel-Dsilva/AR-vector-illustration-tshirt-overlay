@@ -37,14 +37,14 @@ import * as tomNookSVG from './resources/illustration/tom-nook.svg';
 
 // Camera stream video element
 let video;
-let videoWidth = 300;
-let videoHeight = 300;
+let videoWidth = 1200;
+let videoHeight = 800;
 
 // Canvas
 // let faceDetection = null;
 let illustration = null;
 let canvasScope;
-let canvasWidth = 800;
+let canvasWidth = 1200;
 let canvasHeight = 800;
 
 // ML models
